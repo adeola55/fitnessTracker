@@ -6,20 +6,22 @@ const API = {
     } catch (err) {
       console.log(err)
     }
+    
     const json = await res.json();
-
+    console.log("Fetch rectords",json)
     return json[json.length - 1];
   },
   async addExercise(data) {
     const id = location.search.split("=")[1];
-
+    console.log(data)
     const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-
+  
     const json = await res.json();
+    console.log("Record Created",json)
 
     return json;
   },
@@ -29,8 +31,10 @@ const API = {
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     });
-
-    const json = await res.json();
+       const json = await res.json();
+       
+     console.log("POST route",json)
+ 
 
     return json;
   },
@@ -38,7 +42,7 @@ const API = {
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
-
+ console.log("Staats pag",json)
     return json;
   },
 };

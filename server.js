@@ -11,7 +11,7 @@ app.use(express.static("public"))
 app.use(routes);
 
 
-mongoose.connect(process.env.MONGODB_URI  || 'mongodb://localhost/redux_todo_db', {  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  });
+mongoose.connect(process.env.MONGODB_URI  || 'mongodb://localhost/fitnessTracker', {  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  });
 
 app.listen(PORT,function(){
   console.log("App running on port:",PORT)

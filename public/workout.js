@@ -9,8 +9,8 @@ async function initWorkout() {
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
       totalDuration: lastWorkout.totalDuration,
-      numExercises: lastWorkout.exercises.length,
-      ...tallyExercises(lastWorkout.exercises)
+      numExercises: lastWorkout.routine.length,
+      ...tallyExercises(lastWorkout.routine)
     };
 
     renderWorkoutSummary(workoutSummary);
@@ -20,14 +20,19 @@ async function initWorkout() {
 }
 
 function tallyExercises(exercises) {
+  let acc = {}
   const tallied = exercises.reduce((acc, curr) => {
-    if (curr.type === "resistance") {
-      acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
-      acc.totalSets = (acc.totalSets || 0) + curr.sets;
-      acc.totalReps = (acc.totalReps || 0) + curr.reps;
-    } else if (curr.type === "cardio") {
+    console.log(curr)
+    if (curr.workouttype === "resistance") {
+      acc.totalWeight = (acc.totalWeight || 0) + parseInt(curr.weight);
+      acc.totalSets = (acc.totalSets || 0) + parseInt(curr.sets);
+      acc.totalReps = (acc.totalReps || 0) + parseInt(curr.reps);
+      acc.totalDuration = (acc.totalDuration || 0) + parseInt(curr.workoutDuration);
+    } else if (curr.workouttype === "cardio") {
       acc.totalDistance = (acc.totalDistance || 0) + curr.distance;
+      acc.totalDuration = (acc.totalDuration || 0) + parseInt(curr.workoutDuration);
     }
+    console.log("acc",acc)
     return acc;
   }, {});
   return tallied;

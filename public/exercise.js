@@ -104,14 +104,14 @@ async function handleFormSubmit(event) {
     workoutData.workouttype = "cardio";
     workoutData.workoutname = cardioNameInput.value.trim();
     workoutData.distance = Number(distanceInput.value.trim());
-    workoutData.workoutduration = Number(durationInput.value.trim());
+    workoutData.workoutDuration = Number(durationInput.value.trim());
   } else if (workoutType === "resistance") {
     workoutData.workouttype = "resistance";
     workoutData.workoutname = nameInput.value.trim();
     workoutData.weight = Number(weightInput.value.trim());
     workoutData.sets = Number(setsInput.value.trim());
     workoutData.reps = Number(repsInput.value.trim());
-    workoutData.workoutduration = Number(resistanceDurationInput.value.trim());
+    workoutData.workoutDuration = Number(resistanceDurationInput.value.trim());
   }
 
   await API.addExercise(workoutData);

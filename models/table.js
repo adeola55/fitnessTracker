@@ -9,7 +9,7 @@ const fitnessSchema = new Schema({
   },
   routine: [
     {
-    workoutype: {
+    workouttype: {
     type: String,
     trim:true
   },
@@ -19,17 +19,17 @@ const fitnessSchema = new Schema({
     trim:true
   },
     workoutDuration: {
-    type: Number,
+    type: Number
   },
     weight: {
-    type: String,
+    type: Number,
     trim:true
   },
     reps: {
     type: Number,
   },
     sets: {
-    type: String,
+    type: Number,
     trim:true
   },
     distance: {
